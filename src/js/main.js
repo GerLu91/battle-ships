@@ -1,5 +1,7 @@
-import '../css/styles.css';
-// import { initUI } from './ui/content.js';
+import { startGame } from './logic/gameController.js';
 
-console.log("App initialisiert!");
-// initUI();
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Battleship App initialisiert...");
+    
+    startGame();
+});

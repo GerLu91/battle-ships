@@ -1,0 +1,31 @@
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+    gap: 1px; 
+    background-color: #333; 
+    border: 2px solid #333;
+     width: 410px; 
+    height: 410px;
+}
+
+.cell {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    user-select: none;
+     width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #eee; 
+    box-sizing: border-box; 
+}
+
+.cell.ship { background-color: #777 !important; } 
+.cell.miss { background-color: #add8e6; } 
+.cell.hit { background-color: #ff4500; } 
+.cell.sunk { background-color: #000; color: white; } 
+

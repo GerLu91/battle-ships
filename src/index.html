@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP Project</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body id="body">
-    <div id="app">Test</div>
+   <div id="game-container">
+    <div class="board-wrapper">
+        <h2>Spieler</h2>
+        <div id="player-board" class="gameboard"></div>
+    </div>
+    <div class="board-wrapper">
+        <h2>Computer</h2>
+        <div id="enemy-board" class="gameboard"></div>
+    </div>
+</div>
     <script type="module" src="./js/main.js"></script>
 </body>
 </html>

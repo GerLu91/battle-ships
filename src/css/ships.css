@@ -1,0 +1,14 @@
+.ship-preview {
+    display: flex;
+    gap: 2px;
+    cursor: grab;
+    margin-bottom: 15px;
+}
+
+.ship-segment{
+    width: 40px;
+    height: 40px;
+    background-color: #777;
+    border: 1px solid #444;
+    pointer-events: none;
+}

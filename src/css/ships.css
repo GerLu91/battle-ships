@@ -12,3 +12,5 @@
     border: 1px solid #444;
     pointer-events: none;
 }
+
+.ship { background-color: #777 !important; } 

@@ -3,24 +3,27 @@ import { initBoard, updateCell } from "../ui/boardUI";
 import { FLEET_SCHEMA } from "./fleetConfig";
 import { placeFleetRandomly } from "./placementLogic";
 
-export const startGame = () => {
-    const player = createPlayer('Du');
+export const initCombatPhase = (playerBoard) => {
     const computer = createPlayer('Computer', 'computer');
+    computer.board.placeFleetRandomly(FLEET_CONFIG, createShip);
 
     const playerContainer = document.getElementById('player-board');
     const enemyContainer = document.getElementById('enemy-board');
 
-    placeFleetRandomly(player.board, FLEET_SCHEMA);
-    placeFleetRandomly(computer.board, FLEET_SCHEMA);
+    enemyContainer.parentElement.classList.remove('hidden');
+
 
     initBoard(enemyContainer, (index) => handleTurn(index));
-    initBoard(playerContainer, () => {});
+
+    playerContainer.style.pointerEvents = 'none';
 
     player.board.getGrid().forEach((field, index) => {
         if (field.ship) {
             updateCell(playerContainer, index, 'initial', true);
         }
     });
+
+ 
 
     const handleTurn = (index) => {
         const attackResult = computer.board.receiveAttack(index);
@@ -43,7 +46,7 @@ export const startGame = () => {
             if (cpuResult.allSunk) {
                 alter("Maschinen sind besser")
             }
+            enemyContainer.style.pointerEvents = 'auto';
         }, 500);
     };
-    return { player, computer}
 };

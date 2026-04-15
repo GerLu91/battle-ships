@@ -19,13 +19,20 @@
     user-select: none;
     width: 40px;
     height: 40px;
-    background-color: white;
     border: 1px solid #eee; 
     box-sizing: border-box; 
 }
 
-.cell.ship { background-color: #777 !important; } 
+.cell.ship { background-color: #777 !important;
+ border: 2px solid yellow; } 
 .cell.miss { background-color: #add8e6; } 
 .cell.hit { background-color: #ff4500; } 
 .cell.sunk { background-color: #000; color: white; } 
+
+div#player-board div.cell.ship {
+    background-color: #444 !important;
+    border: 2px solid orange !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
 

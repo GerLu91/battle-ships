@@ -1,14 +1,19 @@
-export const initBoard = (containerElement, clickHandler) => {
+export const initBoard = (containerElement,boardModel, clickHandler, isHidden = false) => {
     containerElement.innerHTML = '';
-    for (let i=0; i< 100; i++) {
+    const grid = boardModel.getGrid();
+     grid.forEach((field, i) => {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         cell.dataset.index = i;
 
+        if (!isHidden && field.ship !== null) {
+            cell.classList.add('ship');
+        }
+
         cell.addEventListener('click', () => clickHandler(i));
         containerElement.appendChild(cell);
 
-    }
+    })
 };
 
 export const updateCell = (containerElement, index, result, isShip = false) => {

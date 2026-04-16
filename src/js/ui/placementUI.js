@@ -1,3 +1,4 @@
+import { initBoard } from "./boardUI";
 
 let isVertical = false;
 let draggedElement = null;
@@ -95,6 +96,20 @@ export function checkPlacementComplete(){
         button.classList.remove('hidden');
         button.disabled = false;
     }
+}
+
+export function clearShipDrawer(){
+    const drawer = document.getElementById('ship-drawer');
+    drawer.innerHTML = ''; 
+    }
+
+export function handleRandomPlacement(containerElement, playerBoard, playerShipConfig, shipFactory, clickHandler){
+    playerBoard.reset();
+    playerBoard.placeFleetRandomly(playerShipConfig, shipFactory);
+    initBoard(containerElement, playerBoard, clickHandler,false);
+    clearShipDrawer();
+    checkPlacementComplete();
+    
 }
 
 

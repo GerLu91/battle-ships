@@ -57,9 +57,36 @@ export const createGameboard = () => {
         return {status: 'miss'};
     };
 
+    const placeFleetRandomly = (fleetConfig, shipFactory) => {
+        fleetConfig.forEach(shipData => {
+            let placed = false;
+            while (!placed) {
+                const isVertical = Math.random() > 0.5;
+                const randomIndex = Math.floor(Math.random() * (size * size));
+                
+                const newShip = shipFactory(shipData.length);
+                
+                if (placeShip(newShip, randomIndex, isVertical)) {
+                    placed = true;
+                }
+            }
+        });
+    };
+
+    const reset = () => {
+        ships.length = 0;
+
+        grid.forEach(field =>{
+            field.ship = null;
+            field.isHit = false;
+        });
+    };
+
     return {
         placeShip,
         receiveAttack,
+        placeFleetRandomly, 
+        reset,
         getGrid: () => grid,
         allShipsSunk: () => ships.every(s => s.isSunk())
     };
